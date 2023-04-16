@@ -3,6 +3,9 @@ using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace BigPurpleBank.Api.Product.Common.ModelValidation.FieldProcessors;
 
+/// <summary>
+/// Base class for field processors. This class is used to convert a field validation error into an Error model
+/// </summary>
 public abstract class BaseProcessor
 {
     protected abstract string Code { get; }

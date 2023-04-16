@@ -4,14 +4,17 @@ using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace BigPurpleBank.Api.Product.Common.Filter;
 
+/// <summary>
+/// Action filter to validate the model state. If the model state is invalid, it will throw a BadRequestException
+/// </summary>
 public class ValidateModeFilter : ActionFilterAttribute
 {
-    private readonly IErrorFactory _errorFactory;
+    private readonly IModelValidationErrorFactory _modelValidationErrorFactory;
 
     public ValidateModeFilter(
-        IErrorFactory errorFactory)
+        IModelValidationErrorFactory modelValidationErrorFactory)
     {
-        _errorFactory = errorFactory;
+        _modelValidationErrorFactory = modelValidationErrorFactory;
     }
 
     public override void OnActionExecuting(
@@ -22,7 +25,7 @@ public class ValidateModeFilter : ActionFilterAttribute
             return;
         }
 
-        var errors = _errorFactory.ProcessModelState(context.ModelState);
+        var errors = _modelValidationErrorFactory.ProcessModelState(context.ModelState);
         if (errors.Any())
         {
             throw new BadRequestException(errors);

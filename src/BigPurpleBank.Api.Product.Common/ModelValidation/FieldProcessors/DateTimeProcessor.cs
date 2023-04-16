@@ -1,5 +1,8 @@
 ﻿namespace BigPurpleBank.Api.Product.Common.ModelValidation.FieldProcessors;
 
+/// <summary>
+/// Date time processor
+/// </summary>
 public class DateTimeProcessor : BaseProcessor, IFieldProcessor
 {
     protected override string Code => "urn:au-cds:error:cds-all:Field/InvalidDateTime";

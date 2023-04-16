@@ -6,6 +6,9 @@ using Microsoft.Extensions.Logging;
 
 namespace BigPurpleBank.Api.Product.Common.Middleware;
 
+/// <summary>
+/// Exception handler middleware to sanitize exceptions from the API
+/// </summary>
 public class ExceptionHandlerMiddleware
 {
     private readonly ILogger<ExceptionHandlerMiddleware> _logger;

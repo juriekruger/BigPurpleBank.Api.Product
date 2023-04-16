@@ -25,7 +25,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="obj\Debug\net7.0\" />
+        <Folder Include="obj\Debug\net7.0\" />
     </ItemGroup>
 
 </Project>

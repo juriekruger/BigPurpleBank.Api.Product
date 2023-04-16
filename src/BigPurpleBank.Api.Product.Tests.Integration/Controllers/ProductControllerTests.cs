@@ -2,7 +2,6 @@
 using System.Text.Json;
 using BigPurpleBank.Api.Product.Common.Constants;
 using BigPurpleBank.Api.Product.Common.Extensions;
-using BigPurpleBank.Api.Product.Common.Model;
 using BigPurpleBank.Api.Product.Data.Repositories;
 using BigPurpleBank.Api.Product.Model;
 using BigPurpleBank.Api.Product.Model.Dto;
@@ -56,7 +55,7 @@ public partial class ProductControllerTests : IClassFixture<ProductApiFactory>
 
         var url = "/v3/banking/Product?product-category=LEASES";
         var response = await SendRequestAsync(url);
-        
+
         var responseModel = await ValidateBaseResponse(response);
         responseModel.Data.All(x => x.ProductCategory == ProductCategory.Leases).ShouldBeTrue();
     }
@@ -72,9 +71,9 @@ public partial class ProductControllerTests : IClassFixture<ProductApiFactory>
         await productRepository.AddItemAsync(faker);
 
 
-        var url ="/v3/banking/Product?effective=future";
+        var url = "/v3/banking/Product?effective=future";
         var response = await SendRequestAsync(url);
-        
+
         var responseModel = await ValidateBaseResponse(response);
         responseModel.Data.All(x => x.EffectiveFrom >= DateTime.Now).ShouldBeTrue();
     }
@@ -95,8 +94,8 @@ public partial class ProductControllerTests : IClassFixture<ProductApiFactory>
         var responseModel = await ValidateBaseResponse(response);
         responseModel.Data.All(x => x.EffectiveFrom <= DateTime.Now).ShouldBeTrue();
     }
-    
-    
+
+
     [Fact]
     public async Task Get_WithUpdatedSince_ReturnsOk()
     {
@@ -109,7 +108,7 @@ public partial class ProductControllerTests : IClassFixture<ProductApiFactory>
 
         var url = $"/v3/banking/Product?updated-since={DateTime.Now.AddDays(-1):yyyy-MM-dd}";
         var response = await SendRequestAsync(url);
-        
+
         var responseModel = await ValidateBaseResponse(response);
         responseModel.Data.All(x => x.LastUpdated <= DateTime.Now.AddDays(-1)).ShouldBeTrue();
     }
@@ -138,5 +137,4 @@ public partial class ProductControllerTests : IClassFixture<ProductApiFactory>
         response.StatusCode.ShouldBe(HttpStatusCode.OK);
         return response;
     }
-    
 }

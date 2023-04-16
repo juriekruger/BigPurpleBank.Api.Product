@@ -3,7 +3,10 @@ using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace BigPurpleBank.Api.Product.Common.ModelValidation.Factories;
 
-public interface IErrorFactory : IApiCommonService
+/// <summary>
+///   Process Model state validation errors. This is used to convert the model state errors into a list of Error models
+/// </summary>
+public interface IModelValidationErrorFactory : IApiCommonService
 {
     /// <summary>
     ///     Process Model state validation errors

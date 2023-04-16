@@ -2,7 +2,6 @@
 using BigPurpleBank.Api.Product.Common.Model;
 using BigPurpleBank.Api.Product.Model;
 using BigPurpleBank.Api.Product.Model.Requests;
-using BigPurpleBank.Api.Product.Model.Responses;
 using BigPurpleBank.Api.Product.Model.Responses.Product;
 using BigPurpleBank.Api.Product.Services.Product;
 using Microsoft.AspNetCore.Mvc;

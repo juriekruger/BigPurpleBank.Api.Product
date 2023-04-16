@@ -5,12 +5,14 @@ namespace BigPurpleBank.Api.Product.Data.Factories;
 
 public class CosmosDbContainerFactory : ICosmosDbContainerFactory
 {
+    private readonly List<ContainerInfo> _containers;
+
     /// <summary>
     ///     Azure Cosmos DB Client
     /// </summary>
     private readonly CosmosClient _cosmosClient;
+
     private readonly string _databaseName;
-    private readonly List<ContainerInfo> _containers;
 
     /// <summary>
     ///     Ctor
@@ -18,7 +20,8 @@ public class CosmosDbContainerFactory : ICosmosDbContainerFactory
     /// <param name="cosmosClient"></param>
     /// <param name="databaseName"></param>
     /// <param name="containers"></param>
-    public CosmosDbContainerFactory(CosmosClient cosmosClient,
+    public CosmosDbContainerFactory(
+        CosmosClient cosmosClient,
         string databaseName,
         List<ContainerInfo> containers)
     {
@@ -27,7 +30,8 @@ public class CosmosDbContainerFactory : ICosmosDbContainerFactory
         _cosmosClient = cosmosClient ?? throw new ArgumentNullException(nameof(cosmosClient));
     }
 
-    public async Task<ICosmosDbContainer> GetContainer(string containerName)
+    public async Task<ICosmosDbContainer> GetContainer(
+        string containerName)
     {
         var container = _containers.FirstOrDefault(x => x.Name == containerName);
         if (container == null)
@@ -36,8 +40,8 @@ public class CosmosDbContainerFactory : ICosmosDbContainerFactory
         }
 
 
-        var dbContainer =  new CosmosDbContainer(_cosmosClient, _databaseName, container);
-         await dbContainer.InitializeAsync();
-         return dbContainer;
+        var dbContainer = new CosmosDbContainer(_cosmosClient, _databaseName, container);
+        await dbContainer.GetContainerAsync();
+        return dbContainer;
     }
 }

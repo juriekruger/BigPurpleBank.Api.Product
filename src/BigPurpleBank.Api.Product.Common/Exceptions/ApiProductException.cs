@@ -3,9 +3,12 @@ using BigPurpleBank.Api.Product.Common.Model;
 
 namespace BigPurpleBank.Api.Product.Common.Exceptions;
 
+/// <summary>
+/// General API exception used to sanitize exceptions from the API
+/// </summary>
 public class ApiProductException : Exception
 {
-    public ApiProductException()
+    protected ApiProductException()
     {
     }
 

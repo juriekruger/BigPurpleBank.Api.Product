@@ -7,5 +7,6 @@ public interface ICosmosDbContainerFactory
     /// </summary>
     /// <param name="containerName"></param>
     /// <returns></returns>
-    Task<ICosmosDbContainer> GetContainer(string containerName);
+    Task<ICosmosDbContainer> GetContainer(
+        string containerName);
 }

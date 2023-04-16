@@ -45,6 +45,9 @@ app.UseSwaggerConfiguration()
 app.MapControllers();
 app.Run();
 
+/// <summary>
+/// Public entry point for integration tests.
+/// </summary>
 public partial class Program
 {
 }

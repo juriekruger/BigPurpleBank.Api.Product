@@ -15,12 +15,12 @@ namespace BigPurpleBank.Api.Product.Common.Tests.Filter;
 
 public class ValidateModeFilterTests
 {
-    private readonly Mock<IErrorFactory> _errorFactoryMock;
+    private readonly Mock<IModelValidationErrorFactory> _errorFactoryMock;
     private readonly ValidateModeFilter _sut;
 
     public ValidateModeFilterTests()
     {
-        _errorFactoryMock = new Mock<IErrorFactory>();
+        _errorFactoryMock = new Mock<IModelValidationErrorFactory>();
         _errorFactoryMock.Setup(x => x.ProcessModelState(It.IsAny<ModelStateDictionary>())).Returns(new List<Error> { new() });
         _sut = new ValidateModeFilter(_errorFactoryMock.Object);
     }
@@ -61,7 +61,7 @@ public class ValidateModeFilterTests
         context.ModelState.AddModelError("key", "error");
 
         // Act
-        var exception = Record.Exception(() => _sut.OnActionExecuting(context));
+        Record.Exception(() => _sut.OnActionExecuting(context));
 
         // Assert
         _errorFactoryMock.Verify(x => x.ProcessModelState(It.IsAny<ModelStateDictionary>()), Times.Once);

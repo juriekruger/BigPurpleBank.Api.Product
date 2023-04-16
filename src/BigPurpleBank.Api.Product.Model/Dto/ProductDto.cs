@@ -8,8 +8,10 @@ public class ProductDto : BaseDto
     public int EffectiveFromUnix { get; set; }
     public int EffectiveToUnix { get; set; }
     public int LastUpdatedUnix { get; set; }
+
     [JsonConverter(typeof(JsonStringEnumConverter))]
     public ProductCategory? ProductCategory { get; set; }
+
     public string? Name { get; set; }
     public string? Description { get; set; }
     public string? Brand { get; set; }

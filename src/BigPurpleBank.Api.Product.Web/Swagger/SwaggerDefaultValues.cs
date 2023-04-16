@@ -38,7 +38,6 @@ public class SwaggerDefaultValues : IOperationFilter
         }
 
 
-
         if (operation.Parameters != null)
         {
             // REF: https://github.com/domaindrivendev/Swashbuckle.AspNetCore/issues/412
@@ -61,11 +60,10 @@ public class SwaggerDefaultValues : IOperationFilter
 
                 parameter.Required |= description.IsRequired;
             }
-
         }
 
         operation.Parameters ??= new List<OpenApiParameter>();
-                    
+
         operation.Parameters.Add(new OpenApiParameter
         {
             Name = "x-v",
@@ -76,6 +74,5 @@ public class SwaggerDefaultValues : IOperationFilter
                 Type = "string"
             }
         });
-
     }
 }

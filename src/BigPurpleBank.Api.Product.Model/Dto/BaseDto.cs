@@ -1,11 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace BigPurpleBank.Api.Product.Model.Dto;
 
-public abstract  class BaseDto
+public abstract class BaseDto
 {
     [JsonProperty(PropertyName = "id")]
-    public virtual string Id { get; set; }
-
+    public virtual string Id { get; set; } = null!;
 }

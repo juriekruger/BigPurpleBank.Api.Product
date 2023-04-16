@@ -2,10 +2,14 @@
 
 namespace BigPurpleBank.Api.Product.Data;
 
+/// <summary>
+/// Gets Azure Cosmos DB Container
+/// </summary>
 public interface ICosmosDbContainer
 {
     /// <summary>
-    ///     Azure Cosmos DB Container
+    ///     Initialize a container. If the database does not exist it will get created. If the container does not exist it will
+    ///     get created.
     /// </summary>
-    Container Container { get; }
+    Task<Container> GetContainerAsync();
 }

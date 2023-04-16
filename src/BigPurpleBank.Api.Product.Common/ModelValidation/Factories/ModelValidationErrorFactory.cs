@@ -3,11 +3,12 @@ using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace BigPurpleBank.Api.Product.Common.ModelValidation.Factories;
 
-public class ErrorFactory : IErrorFactory
+/// <inheritdoc />
+public class ModelValidationErrorFactory : IModelValidationErrorFactory
 {
     private readonly IFieldProcessorFactory _processorFactory;
 
-    public ErrorFactory(
+    public ModelValidationErrorFactory(
         IFieldProcessorFactory processorFactory)
     {
         _processorFactory = processorFactory;

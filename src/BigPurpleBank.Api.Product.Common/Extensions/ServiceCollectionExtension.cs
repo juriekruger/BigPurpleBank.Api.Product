@@ -8,6 +8,11 @@ namespace BigPurpleBank.Api.Product.Common.Extensions;
 
 public static class ServiceCollectionExtension
 {
+    /// <summary>
+    /// Add common services to the DI container
+    /// </summary>
+    /// <param name="services"></param>
+    /// <returns></returns>
     public static IServiceCollection AddCommonServices(
         this IServiceCollection services)
     {
@@ -21,6 +26,11 @@ public static class ServiceCollectionExtension
         return services;
     }
 
+    /// <summary>
+    /// Add common middleware to the pipeline
+    /// </summary>
+    /// <param name="app"></param>
+    /// <returns></returns>
     public static IApplicationBuilder AddCommonServices(
         this IApplicationBuilder app)
     {

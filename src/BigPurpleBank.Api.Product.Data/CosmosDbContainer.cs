@@ -3,34 +3,35 @@ using Microsoft.Azure.Cosmos;
 
 namespace BigPurpleBank.Api.Product.Data;
 
+
+/// <inheritdoc />
 public class CosmosDbContainer : ICosmosDbContainer
 {
+    private readonly ContainerInfo _containerInfo;
     private readonly CosmosClient _cosmosClient;
     private readonly string _databaseName;
-    private readonly ContainerInfo _containerName;
-    public Container Container { get; set; }
 
-    public CosmosDbContainer(CosmosClient cosmosClient,
+    public CosmosDbContainer(
+        CosmosClient cosmosClient,
         string databaseName,
-        ContainerInfo containerName)
+        ContainerInfo containerInfo)
     {
-        _cosmosClient = cosmosClient;
-        _databaseName = databaseName;
-        _containerName = containerName;
+        _cosmosClient = cosmosClient ?? throw new ArgumentNullException(nameof(cosmosClient));
+        _databaseName = databaseName ?? throw new ArgumentNullException(nameof(databaseName));
+        _containerInfo = containerInfo ?? throw new ArgumentNullException(nameof(containerInfo));
 
     }
 
-    /// <summary>
-    /// Initialize a container. If the database does not exist it will get created. If the container does not exist it will get created.
-    /// </summary>
-    public async Task InitializeAsync()
+
+    /// <inheritdoc />
+    public async Task<Container> GetContainerAsync()
     {
         var database = await _cosmosClient.CreateDatabaseIfNotExistsAsync(_databaseName);
-        var  container = await database.Database.CreateContainerIfNotExistsAsync(
-            id: _containerName.Name,
-            partitionKeyPath: _containerName.PartitionKey,
-            throughput: 400
+        var containerResponse = await database.Database.CreateContainerIfNotExistsAsync(
+            _containerInfo.Name,
+            _containerInfo.PartitionKey,
+            400
         );
-        Container = container.Container;
+        return containerResponse.Container;
     }
 }

@@ -2,34 +2,35 @@
 
 namespace BigPurpleBank.Api.Product.Data.Repositories;
 
+/// <summary>
+/// Generic repository for DbContext
+/// </summary>
+/// <typeparam name="TEntity"></typeparam>
 public interface IDbContextRepository<TEntity>
     where TEntity : BaseDto
 
 {
     /// <summary>
-    ///     Get one item by Id
-    /// </summary>
-    /// <param name="id"></param>
-    /// <returns></returns>
-    Task<TEntity> GetItemAsync(string id);
-    
-    /// <summary>
     ///     Get items given a query
     /// </summary>
     /// <param name="query"></param>
+    /// <param name="cancellationToken"></param>
     /// <returns></returns>
-    Task<IEnumerable<TEntity>> GetItemsAsync(IQueryable<TEntity> query);
-    
+    Task<IEnumerable<TEntity>> GetItemsAsync(
+        IQueryable<TEntity> query,
+        CancellationToken cancellationToken);
+
     /// <summary>
-    /// Get a queryable
+    ///     Get a queryable
     /// </summary>
     /// <returns></returns>
     Task<IQueryable<TEntity>> GetQueryableAsync();
-    
+
     /// <summary>
-    /// Add an item
+    ///     Add an item
     /// </summary>
     /// <param name="item"></param>
     /// <returns></returns>
-    Task AddItemAsync(TEntity item);
+    Task AddItemAsync(
+        TEntity item);
 }

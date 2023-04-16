@@ -8,13 +8,12 @@ namespace BigPurpleBank.Api.Product.Tests.Integration.Controllers;
 
 public partial class ProductControllerTests
 {
-    
     [Fact]
     public async Task Get_WithInvalidEffective_ReturnsBadRequest()
     {
         var url = "/v3/banking/Product?effective=invalid";
         var responseModel = await SendAndValidateRequestAsync(url);
-        
+
         responseModel.ShouldNotBeNull();
         responseModel.Errors.ShouldNotBeEmpty();
         responseModel.Errors[0].ShouldBeEquivalentTo(new Error
@@ -45,7 +44,7 @@ public partial class ProductControllerTests
     [Fact]
     public async Task Get_WithInvalidUpdatedSince_ReturnsBadRequest()
     {
-        var url ="/v3/banking/Product?updated-since=invalid";
+        var url = "/v3/banking/Product?updated-since=invalid";
         var responseModel = await SendAndValidateRequestAsync(url);
         responseModel.ShouldNotBeNull();
         responseModel.Errors.ShouldNotBeEmpty();
@@ -60,7 +59,7 @@ public partial class ProductControllerTests
     [Fact]
     public async Task Get_WithInvalidProductCategory_ReturnsBadRequest()
     {
-        var url ="/v3/banking/Product?product-category=invalid";
+        var url = "/v3/banking/Product?product-category=invalid";
         var responseModel = await SendAndValidateRequestAsync(url);
         responseModel.ShouldNotBeNull();
         responseModel.Errors.ShouldNotBeEmpty();
@@ -75,7 +74,7 @@ public partial class ProductControllerTests
     [Fact]
     public async Task Get_WithInvalidPage_ReturnsBadRequest()
     {
-        var url ="/v3/banking/Product?page=-1";
+        var url = "/v3/banking/Product?page=-1";
         var responseModel = await SendAndValidateRequestAsync(url);
         responseModel.ShouldNotBeNull();
         responseModel.Errors.ShouldNotBeEmpty();
@@ -90,7 +89,7 @@ public partial class ProductControllerTests
     [Fact]
     public async Task Get_WithInvalidPageSize_ReturnsBadRequest()
     {
-        var url ="/v3/banking/Product?page-size=0";
+        var url = "/v3/banking/Product?page-size=0";
         var responseModel = await SendAndValidateRequestAsync(url);
         responseModel.ShouldNotBeNull();
         responseModel.Errors.ShouldNotBeEmpty();

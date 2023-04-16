@@ -13,7 +13,7 @@ public class ErrorFactoryTests
     {
         // Arrange
         var modelState = new ModelStateDictionary();
-        var sut = new ErrorFactory(new Mock<IFieldProcessorFactory>().Object);
+        var sut = new ModelValidationErrorFactory(new Mock<IFieldProcessorFactory>().Object);
 
         // Act
         var result = sut.ProcessModelState(modelState);
@@ -30,7 +30,7 @@ public class ErrorFactoryTests
         modelState.AddModelError("key", "error");
         var fieldProcessorFactory = new Mock<IFieldProcessorFactory>();
         fieldProcessorFactory.Setup(x => x.Get(It.IsAny<Type>())).Returns(new DefaultFieldProcessor());
-        var sut = new ErrorFactory(fieldProcessorFactory.Object);
+        var sut = new ModelValidationErrorFactory(fieldProcessorFactory.Object);
 
         // Act
         var result = sut.ProcessModelState(modelState);
@@ -47,7 +47,7 @@ public class ErrorFactoryTests
         modelState.AddModelError("key", "error");
         var processorFactory = new Mock<IFieldProcessorFactory>();
         processorFactory.Setup(x => x.Get(It.IsAny<Type>())).Returns(new DefaultFieldProcessor());
-        var sut = new ErrorFactory(processorFactory.Object);
+        var sut = new ModelValidationErrorFactory(processorFactory.Object);
 
         // Act
         var result = sut.ProcessModelState(modelState);

@@ -2,6 +2,9 @@
 
 namespace BigPurpleBank.Api.Product.Common.ModelValidation.Factories;
 
+/// <summary>
+/// Returns the correct field processor for the given type. If no processor is found, the default processor is returned
+/// </summary>
 public interface IFieldProcessorFactory : IApiCommonService
 {
     /// <summary>

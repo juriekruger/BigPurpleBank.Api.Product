@@ -8,6 +8,11 @@ using Microsoft.Extensions.Options;
 
 namespace BigPurpleBank.Api.Product.Common.Middleware;
 
+/// <summary>
+/// Middleware to validate the version header.
+/// If the version header is invalid, it will return BadRequest.
+/// If the version header is not supported, it will return NotAcceptable.
+/// </summary>
 public class VersionValidationMiddleware
 {
     private readonly RequestDelegate _next;

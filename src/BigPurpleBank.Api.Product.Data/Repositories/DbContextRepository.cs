@@ -8,59 +8,38 @@ namespace BigPurpleBank.Api.Product.Data.Repositories;
 public abstract class DbContextRepository<TEntity> : IDbContextRepository<TEntity>, IContainerContext<TEntity>
     where TEntity : BaseDto
 {
+    private readonly ICosmosDbContainerFactory _cosmosDbContainerFactory;
+
+    protected DbContextRepository(
+        ICosmosDbContainerFactory cosmosDbContainerFactory)
+    {
+        _cosmosDbContainerFactory = cosmosDbContainerFactory ?? throw new ArgumentNullException(nameof(cosmosDbContainerFactory));
+    }
 
     /// <summary>
     ///     Name of the CosmosDB container
     /// </summary>
     public abstract string ContainerName { get; }
-    
-    
-    private readonly ICosmosDbContainerFactory _cosmosDbContainerFactory;
-    private Container _container;
-
-    protected DbContextRepository(ICosmosDbContainerFactory cosmosDbContainerFactory)
-    {
-        _cosmosDbContainerFactory = cosmosDbContainerFactory ?? throw new ArgumentNullException(nameof(cosmosDbContainerFactory));
-    }
-    
-    private async Task InitializeContainer()
-    {
-        var container = await _cosmosDbContainerFactory.GetContainer(ContainerName);
-        _container = container.Container;
-    }
 
     /// <summary>
     ///     Generate id
     /// </summary>
     /// <param name="entity"></param>
     /// <returns></returns>
-    public abstract string GenerateId(TEntity entity);
-    
-    
-    /// <inheritdoc />
-    public async Task<TEntity> GetItemAsync(string id)
-    {
-        await InitializeContainer();
-        try
-        {
-            ItemResponse<TEntity> response = await _container.ReadItemAsync<TEntity>(id, new PartitionKey(id));
-            return response.Resource;
-        }
-        catch (CosmosException ex) when (ex.StatusCode == System.Net.HttpStatusCode.NotFound)
-        {
-            return null;
-        }
-    }
+    public abstract string GenerateId(
+        TEntity entity);
+
 
     /// <inheritdoc />
-    public async Task<IEnumerable<TEntity>> GetItemsAsync(IQueryable<TEntity> query)
+    public async Task<IEnumerable<TEntity>> GetItemsAsync(
+        IQueryable<TEntity> query,
+        CancellationToken cancellationToken)
     {
-        await InitializeContainer();
         var resultSetIterator = query.ToFeedIterator();
         var results = new List<TEntity>();
         while (resultSetIterator.HasMoreResults)
         {
-            var response = await resultSetIterator.ReadNextAsync();
+            var response = await resultSetIterator.ReadNextAsync(cancellationToken);
 
             results.AddRange(response.ToList());
         }
@@ -71,14 +50,22 @@ public abstract class DbContextRepository<TEntity> : IDbContextRepository<TEntit
     /// <inheritdoc />
     public async Task<IQueryable<TEntity>> GetQueryableAsync()
     {
-        await InitializeContainer();
-        return _container.GetItemLinqQueryable<TEntity>();
+        var container = await GetContainerAsync();
+        return container.GetItemLinqQueryable<TEntity>();
     }
-    
-    public async Task AddItemAsync(TEntity item)
+
+    /// <inheritdoc />
+    public async Task AddItemAsync(
+        TEntity item)
     {
-        await InitializeContainer();
         item.Id = GenerateId(item);
-        await _container.CreateItemAsync(item);
+        var container = await GetContainerAsync();
+        await container.CreateItemAsync(item);
+    }
+
+    private async Task<Container> GetContainerAsync()
+    {
+        var container = await _cosmosDbContainerFactory.GetContainer(ContainerName);
+        return await container.GetContainerAsync();
     }
 }

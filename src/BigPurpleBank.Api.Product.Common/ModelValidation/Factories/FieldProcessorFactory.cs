@@ -2,6 +2,8 @@
 
 namespace BigPurpleBank.Api.Product.Common.ModelValidation.Factories;
 
+
+/// <inheritdoc />
 public class FieldProcessorFactory : IFieldProcessorFactory
 {
     private readonly IEnumerable<IFieldProcessor> _fieldProcessors;

@@ -10,8 +10,8 @@ namespace BigPurpleBank.Api.Product.Services.Product;
 
 public class ProductService : IProductService
 {
-    private readonly IProductRepository _productRepository;
     private readonly IMapper _mapper;
+    private readonly IProductRepository _productRepository;
 
     public ProductService(
         IProductRepository productRepository,
@@ -30,30 +30,27 @@ public class ProductService : IProductService
         {
             query = query.Where(x => x.ProductCategory == request.ProductCategory.Value);
         }
-        
+
         if (!string.IsNullOrWhiteSpace(request.Brand))
         {
             query = query.Where(x => x.Brand == request.Brand);
         }
-        
+
         if (request.UpdatedSince.HasValue)
         {
             var updatedSinceUnix = request.UpdatedSince.Value.ToUnixTime();
             query = query.Where(x => x.LastUpdatedUnix <= updatedSinceUnix);
         }
-        
-        var nowUnix = DateTime.Now.ToUnixTime();
-        switch (request.Effective)
-        {
-            case EffectiveFrom.Current:
-                query = query.Where(x => x.EffectiveFromUnix <= nowUnix);
-                break;
-            case EffectiveFrom.Future:
-                query = query.Where(x => x.EffectiveFromUnix > nowUnix);
-                break;
-        }
 
-        var products = await _productRepository.GetItemsAsync(query);
+        var nowUnix = DateTime.Now.ToUnixTime();
+        query = request.Effective switch
+        {
+            EffectiveFrom.Current => query.Where(x => x.EffectiveFromUnix <= nowUnix),
+            EffectiveFrom.Future => query.Where(x => x.EffectiveFromUnix > nowUnix),
+            _ => query
+        };
+
+        var products = await _productRepository.GetItemsAsync(query, cancellationToken);
 
         return new BaseResponseModel<IEnumerable<ProductViewModel>>
         {

@@ -2,8 +2,8 @@
 
 public class BaseResponseModel<T>
 {
-    public T Data { get; set; }
+    public T Data { get; set; } = default!;
 
-    public LinksPaginated Links { get; set; }
-    public MetaPaginated Meta { get; set; }
+    public LinksPaginated? Links { get; set; }
+    public MetaPaginated? Meta { get; set; }
 }
