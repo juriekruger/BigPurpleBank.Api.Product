@@ -270,8 +270,7 @@ Below are a list of improvements that could be made to the application. I ran ou
 
 - Update Version to use Asp.Versioning.Mvc
 - Custom DateTime/ DateTimeOffSett validation Service.
-  - At the moment all validation shows a response of `InValid Field` even if the field is a Date. This does not match the requirements to have a specific code for `urn:au-cds:error:cds-all:    Field/InvalidDateTime`.
-- Validation for max page is not implemented `urn:au-cds:error:cds-all:  Field/InvalidPage`
+  - At the moment all validation shows a response of `InValid Field` even if the field is a Date. This does not match the requirements to have a specific code for `urn:au-cds:error:cds-all:Field/InvalidDateTime`.
 - Cleanup data generated in integrations test
 - Compile a Docker-compose to bring up a docker container for running the test and Cosmosdb Emulator.
 - Finish off CI/CD pipeline

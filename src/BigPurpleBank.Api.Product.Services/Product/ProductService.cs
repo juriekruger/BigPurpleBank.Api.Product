@@ -13,7 +13,7 @@ using BigPurpleBank.Api.Product.Services.MetaData;
 namespace BigPurpleBank.Api.Product.Services.Product;
 
 /// <inheritdoc />
-public class ProductService : IProductService
+public class ProductService : BaseService, IProductService
 {
     private readonly IMapper _mapper;
     private readonly IProductRepository _productRepository;
@@ -107,15 +107,5 @@ public class ProductService : IProductService
         }
 
         return query;
-    }
-
-    private static void ValidatePageSize(
-        BaseRequest request,
-        MetaPaginated metaData)
-    {
-        if (request.Page.GetValueOrDefault() > metaData.TotalPages)
-        {
-            throw new BadRequestException(new[] { new InvalidPageError() });
-        }
     }
 }
