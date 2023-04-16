@@ -23,4 +23,6 @@ jobs:
       - name: Restore dependencies
         run: dotnet restore src/BigPurpleBank.Api.Product.sln
       - name: Build
-        run: dotnet build --configuration Release src/BigPurpleBank.Api.Product.sln
+        run: | 
+          dotnet build --configuration Release src/BigPurpleBank.Api.Product.sln
+          dotnet test src/BigPurpleBank.Api.Product.Common.Tests/BigPurpleBank.Api.Product.Common.Tests.csproj
