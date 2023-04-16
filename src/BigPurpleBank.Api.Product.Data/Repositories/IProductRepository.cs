@@ -7,4 +7,5 @@ namespace BigPurpleBank.Api.Product.Data.Repositories;
 /// </summary>
 public interface IProductRepository : IDbContextRepository<ProductDto>
 {
+
 }

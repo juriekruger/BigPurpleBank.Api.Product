@@ -14,10 +14,14 @@ public interface IDbContextRepository<TEntity>
     ///     Get items given a query
     /// </summary>
     /// <param name="query"></param>
+    /// <param name="pageSize"></param>
+    /// <param name="page"></param>
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
     Task<IEnumerable<TEntity>> GetItemsAsync(
         IQueryable<TEntity> query,
+        int pageSize,
+        int page,
         CancellationToken cancellationToken);
 
     /// <summary>
@@ -33,4 +37,12 @@ public interface IDbContextRepository<TEntity>
     /// <returns></returns>
     Task AddItemAsync(
         TEntity item);
+    
+    /// <summary>
+    /// Returns the total record count
+    /// </summary>
+    /// <param name="cancellationToken"></param>
+    /// <returns></returns>
+    Task<int> GetRecordCountAsync(
+        CancellationToken cancellationToken);
 }

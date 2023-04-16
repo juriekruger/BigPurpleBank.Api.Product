@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BigPurpleBank.Api.Product.Model.Requests;
 
-public class GetProductsRequest
+public class GetProductsRequest: BaseRequest
 {
     [FromQuery(Name = "effective")]
     [JsonConverter(typeof(JsonStringEnumConverter))]
@@ -21,11 +21,4 @@ public class GetProductsRequest
     [JsonConverter(typeof(JsonStringEnumConverter))]
     public ProductCategory? ProductCategory { get; set; }
 
-    [FromQuery(Name = "page")]
-    [Range(0, int.MaxValue)]
-    public int? Page { get; set; } = 1;
-
-    [FromQuery(Name = "page-size")]
-    [Range(1, 1000)]
-    public int? PageSize { get; set; } = 25;
 }

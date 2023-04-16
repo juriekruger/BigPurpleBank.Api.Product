@@ -33,8 +33,13 @@ public abstract class DbContextRepository<TEntity> : IDbContextRepository<TEntit
     /// <inheritdoc />
     public async Task<IEnumerable<TEntity>> GetItemsAsync(
         IQueryable<TEntity> query,
+        int pageSize,
+        int page,
         CancellationToken cancellationToken)
     {
+        query = query
+            .Skip(pageSize * (page - 1))
+            .Take(pageSize);
         var resultSetIterator = query.ToFeedIterator();
         var results = new List<TEntity>();
         while (resultSetIterator.HasMoreResults)
@@ -61,6 +66,14 @@ public abstract class DbContextRepository<TEntity> : IDbContextRepository<TEntit
         item.Id = GenerateId(item);
         var container = await GetContainerAsync();
         await container.CreateItemAsync(item);
+    }
+
+    public async Task<int> GetRecordCountAsync(
+        CancellationToken cancellationToken)
+    {
+        var container = await GetContainerAsync();
+        var result = await container.GetItemQueryIterator<int>("SELECT VALUE COUNT(1) FROM c").ReadNextAsync(cancellationToken);
+        return result.FirstOrDefault();
     }
 
     private async Task<Container> GetContainerAsync()

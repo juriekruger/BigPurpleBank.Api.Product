@@ -7,19 +7,19 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Linq.PredicateBuilder" Version="1.1.0"/>
-        <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="7.0.0"/>
-        <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="7.0.4"/>
-        <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="7.0.0"/>
+        <PackageReference Include="Linq.PredicateBuilder" Version="1.1.0" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="7.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="7.0.4" />
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="7.0.0" />
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\BigPurpleBank.Api.Product.Common\BigPurpleBank.Api.Product.Common.csproj"/>
-        <ProjectReference Include="..\BigPurpleBank.Api.Product.Data\BigPurpleBank.Api.Product.Data.csproj"/>
+        <ProjectReference Include="..\BigPurpleBank.Api.Product.Common\BigPurpleBank.Api.Product.Common.csproj" />
+        <ProjectReference Include="..\BigPurpleBank.Api.Product.Data\BigPurpleBank.Api.Product.Data.csproj" />
     </ItemGroup>
 
     <ItemGroup>
-        <Folder Include="obj\Debug\net7.0\"/>
+        <Folder Include="obj\Debug\net7.0\" />
     </ItemGroup>
 
 </Project>

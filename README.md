@@ -117,7 +117,7 @@ The error response model is a custom model that is used to return the error resp
 
 #### Headers
 
-- `x-v" : "3"`
+- `"x-v" : "3"`
 
 #### Query Parameters
 This endpoint returns a list of products. The endpoint supports the following query parameters:
@@ -271,8 +271,6 @@ Below are a list of improvements that could be made to the application. I ran ou
 - Update Version to use Asp.Versioning.Mvc
 - Custom DateTime/ DateTimeOffSett validation Service.
   - At the moment all validation shows a response of `InValid Field` even if the field is a Date. This does not match the requirements to have a specific code for `urn:au-cds:error:cds-all:    Field/InvalidDateTime`.
-- Populate Links in response with the correct links.
-- Populate Meta in response with the correct record numbers
 - Validation for max page is not implemented `urn:au-cds:error:cds-all:  Field/InvalidPage`
 - Cleanup data generated in integrations test
 - Compile a Docker-compose to bring up a docker container for running the test and Cosmosdb Emulator.
