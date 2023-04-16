@@ -14,6 +14,16 @@ This is a simple implementation of the CDS API. It is a .NET 7 Web API that uses
 - Serilog
 - xUnit
 
+## CI/CD
+
+This project contains 2 github actions
+- PR
+  - This action runs the tests and builds the application.
+  - TODO: Add docker-compose to start the Cosmosdb Emulator. For integration tests.
+- main
+  - This action runs the tests, builds the application.
+  - TODO: Add functionality to deploy the application to Azure.
+
 ## Running the application
 
 Make sure you have the following installed:
@@ -266,3 +276,4 @@ Below are a list of improvements that could be made to the application. I ran ou
 - Validation for max page is not implemented `urn:au-cds:error:cds-all:  Field/InvalidPage`
 - Cleanup data generated in integrations test
 - Compile a Docker-compose to bring up a docker container for running the test and Cosmosdb Emulator.
+- Finish off CI/CD pipeline
