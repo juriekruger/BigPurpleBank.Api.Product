@@ -113,7 +113,7 @@ public class ProductService : IProductService
         BaseRequest request,
         MetaPaginated metaData)
     {
-        if (request.PageSize.GetValueOrDefault() > metaData.TotalPages)
+        if (request.Page.GetValueOrDefault() > metaData.TotalPages)
         {
             throw new BadRequestException(new[] { new InvalidPageError() });
         }
