@@ -1,0 +1,58 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BigPurpleBank.Api.Product.Web", "BigPurpleBank.Api.Product.Web\BigPurpleBank.Api.Product.Web.csproj", "{1250B861-AB40-4BEA-B12D-04A8D02819E5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BigPurpleBank.Api.Product.Model", "BigPurpleBank.Api.Product.Model\BigPurpleBank.Api.Product.Model.csproj", "{8E661B34-6B8C-4FAF-B9E2-8BA608B1D696}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BigPurpleBank.Api.Product.Tests.Integration", "BigPurpleBank.Api.Product.Tests.Integration\BigPurpleBank.Api.Product.Tests.Integration.csproj", "{D861DD9E-4C61-4EDC-90FA-0220BB5344D1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{30993ADA-834F-4A52-A304-E452B347F185}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BigPurpleBank.Api.Product.Common", "BigPurpleBank.Api.Product.Common\BigPurpleBank.Api.Product.Common.csproj", "{40699178-C96D-4765-949A-F31E977280E7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BigPurpleBank.Api.Product.Data", "BigPurpleBank.Api.Product.Data\BigPurpleBank.Api.Product.Data.csproj", "{A90FBBD4-C890-4FC0-873C-E5B812712C74}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BigPurpleBank.Api.Product.Services", "BigPurpleBank.Api.Product.Services\BigPurpleBank.Api.Product.Services.csproj", "{C4C43985-F908-4114-B6BC-3B6BDE3F9C47}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BigPurpleBank.Api.Product.Common.Tests", "BigPurpleBank.Api.Product.Common.Tests\BigPurpleBank.Api.Product.Common.Tests.csproj", "{5154539B-DD45-4DF3-A573-26324A873A19}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1250B861-AB40-4BEA-B12D-04A8D02819E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1250B861-AB40-4BEA-B12D-04A8D02819E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1250B861-AB40-4BEA-B12D-04A8D02819E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1250B861-AB40-4BEA-B12D-04A8D02819E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E661B34-6B8C-4FAF-B9E2-8BA608B1D696}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E661B34-6B8C-4FAF-B9E2-8BA608B1D696}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E661B34-6B8C-4FAF-B9E2-8BA608B1D696}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E661B34-6B8C-4FAF-B9E2-8BA608B1D696}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D861DD9E-4C61-4EDC-90FA-0220BB5344D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D861DD9E-4C61-4EDC-90FA-0220BB5344D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D861DD9E-4C61-4EDC-90FA-0220BB5344D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D861DD9E-4C61-4EDC-90FA-0220BB5344D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{40699178-C96D-4765-949A-F31E977280E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40699178-C96D-4765-949A-F31E977280E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40699178-C96D-4765-949A-F31E977280E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40699178-C96D-4765-949A-F31E977280E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A90FBBD4-C890-4FC0-873C-E5B812712C74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A90FBBD4-C890-4FC0-873C-E5B812712C74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A90FBBD4-C890-4FC0-873C-E5B812712C74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A90FBBD4-C890-4FC0-873C-E5B812712C74}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4C43985-F908-4114-B6BC-3B6BDE3F9C47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4C43985-F908-4114-B6BC-3B6BDE3F9C47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4C43985-F908-4114-B6BC-3B6BDE3F9C47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4C43985-F908-4114-B6BC-3B6BDE3F9C47}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5154539B-DD45-4DF3-A573-26324A873A19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5154539B-DD45-4DF3-A573-26324A873A19}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5154539B-DD45-4DF3-A573-26324A873A19}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5154539B-DD45-4DF3-A573-26324A873A19}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D861DD9E-4C61-4EDC-90FA-0220BB5344D1} = {30993ADA-834F-4A52-A304-E452B347F185}
+		{5154539B-DD45-4DF3-A573-26324A873A19} = {30993ADA-834F-4A52-A304-E452B347F185}
+	EndGlobalSection
+EndGlobal
